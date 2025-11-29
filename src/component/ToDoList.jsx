@@ -10,7 +10,7 @@ function ToDoList() {
         {id: 3, description: "Wash the dishes"},
     ]);
     const [inputValue, setInputValue] = useState('');
-    const [idCount, setIdCount] = useState(3);
+    const [lineThrough, setLineThrough] = useState(false);
 
     const handleInputValue = (event) => {
         setInputValue(event.target.value);
@@ -36,7 +36,7 @@ function ToDoList() {
 
     return (
         <>
-            <MyContext.Provider value={{setTasks}}>
+            <MyContext.Provider value={{setTasks, lineThrough, setLineThrough}}>
                 <div className="h-screen w-screen flex justify-center items-center border-2 border-red-600">
                     <div id="list-container" className="h-full w-1/2 flex flex-col items-center border-2 border-red-600">
                         {/* TITLE */}
