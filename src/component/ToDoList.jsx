@@ -9,7 +9,7 @@ function ToDoList() {
         {id: 2, description: "Take out the trash"},
         {id: 3, description: "Wash the dishes"},
     ]);
-    const [inputValue, setInputValue] = useState();
+    const [inputValue, setInputValue] = useState('');
 
     const handleInputValue = (event) => {
         setInputValue(event.target.value);
@@ -17,10 +17,14 @@ function ToDoList() {
 
     const resetConsole = () => {
         console.clear();
+        setInputValue('');
     }
 
     const addTask = () => {
-        setTasks(task => [...task, {id: 4, description: "Do laundry"}]);
+        // handleInputValue();
+        // had it here at first but didn't work when commented out the thing works
+        setInputValue('');
+        setTasks(task => [...task, {description: inputValue}]);
     }
 
 
@@ -32,7 +36,7 @@ function ToDoList() {
                     <span onClick={resetConsole} className="mt-10 text-7xl border-2 border-red-600 cursor-pointer">To Do List</span>
                     {/* ADD TASK BAR */}
                     <div className="w-full flex justify-center mt-5">
-                        <input onChange={handleInputValue} type="text" className="h-20 w-1/2 border-2 border-black text-4xl rounded-xl" />
+                        <input onChange={handleInputValue} value={inputValue} type="text" className="h-20 w-1/2 border-2 border-black text-4xl rounded-xl" />
                         <button onClick={addTask} className="w-20 ml-5 text-4xl border-2 border-black rounded-xl">Add</button>
                     </div>
 
