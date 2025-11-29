@@ -4,6 +4,7 @@ import Task from "./Task";
 
 function ToDoList() {
     // const {} = useContext(MyContext);
+    const [tasks, setTasks] = useState([]);
 
     const resetConsole = () => {
         console.clear();
@@ -26,7 +27,12 @@ function ToDoList() {
                     <div id="tasks-container" className="h-full w-full flex flex-col items-center mt-5 border-2 border-red-600">
 
                         {/* TASKS */}
-                        <Task />
+                        <div>
+                            {tasks.map((task, index) => {
+                                <Task key={index} description={"test"}/>
+                            })}
+                        </div>
+
 
                     </div>
                 </div>
