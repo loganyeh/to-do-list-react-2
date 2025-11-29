@@ -5,14 +5,24 @@ import Task from "./Task";
 function ToDoList() {
     // const {} = useContext(MyContext);
     const [tasks, setTasks] = useState([
-        {id: 1, description: "text1"},
-        {id: 2, description: "text2"},
-        {id: 3, description: "text3"},
+        {id: 1, description: "Walk the dog"},
+        {id: 2, description: "Take out the trash"},
+        {id: 3, description: "Wash the dishes"},
     ]);
+    const [inputValue, setInputValue] = useState();
+
+    const handleInputValue = (event) => {
+        setInputValue(event.target.value);
+    }
 
     const resetConsole = () => {
         console.clear();
     }
+
+    const addTask = () => {
+        setTasks(task => [...task, {id: 4, description: "Do laundry"}]);
+    }
+
 
     return (
         <>
@@ -22,8 +32,8 @@ function ToDoList() {
                     <span onClick={resetConsole} className="mt-10 text-7xl border-2 border-red-600 cursor-pointer">To Do List</span>
                     {/* ADD TASK BAR */}
                     <div className="w-full flex justify-center mt-5">
-                        <input type="text" className="h-20 w-1/2 border-2 border-black text-4xl rounded-xl" />
-                        <button className="w-20 ml-5 text-4xl border-2 border-black rounded-xl">Add</button>
+                        <input onChange={handleInputValue} type="text" className="h-20 w-1/2 border-2 border-black text-4xl rounded-xl" />
+                        <button onClick={addTask} className="w-20 ml-5 text-4xl border-2 border-black rounded-xl">Add</button>
                     </div>
 
                     {/* TASK CONTAINER */}
@@ -31,7 +41,7 @@ function ToDoList() {
 
                         {/* TASKS */}
                         {tasks.map((task, index) => {
-                            return <Task key={task.id} id={task.id} description={task.description}/>
+                            return <Task key={index} id={index} description={task.description}/>
                         })}
 
 
