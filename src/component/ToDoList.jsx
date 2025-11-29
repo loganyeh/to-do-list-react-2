@@ -10,6 +10,7 @@ function ToDoList() {
         {id: 3, description: "Wash the dishes"},
     ]);
     const [inputValue, setInputValue] = useState('');
+    const [idCount, setIdCount] = useState(3);
 
     const handleInputValue = (event) => {
         setInputValue(event.target.value);
@@ -23,8 +24,14 @@ function ToDoList() {
     const addTask = () => {
         // handleInputValue();
         // had it here at first but didn't work when commented out the thing works
-        setInputValue('');
-        setTasks(task => [...task, {description: inputValue}]);
+        if(inputValue === ""){
+            window.alert(`Add a task`);
+        } 
+        else{
+            setInputValue('');
+            setIdCount(prev => prev + 1);
+            setTasks(task => [...task, {id: idCount, description: inputValue}]);
+        }
     };
 
     return (
