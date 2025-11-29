@@ -1,5 +1,5 @@
 
-function Task(description) {
+function Task({id, description}) {
 
     return (
         <>

@@ -4,11 +4,14 @@ import Task from "./Task";
 
 function ToDoList() {
     // const {} = useContext(MyContext);
-    const [tasks, setTasks] = useState([]);
+    const [tasks, setTasks] = useState([
+        {id: 1, description: "text1"},
+        {id: 2, description: "text2"},
+        {id: 3, description: "text3"},
+    ]);
 
     const resetConsole = () => {
         console.clear();
-
     }
 
     return (
@@ -27,11 +30,9 @@ function ToDoList() {
                     <div id="tasks-container" className="h-full w-full flex flex-col items-center mt-5 border-2 border-red-600">
 
                         {/* TASKS */}
-                        <div>
-                            {tasks.map((task, index) => {
-                                <Task key={index} description={"test"}/>
-                            })}
-                        </div>
+                        {tasks.map((task, index) => {
+                            return <Task key={task.id} id={task.id} description={task.description}/>
+                        })}
 
 
                     </div>
