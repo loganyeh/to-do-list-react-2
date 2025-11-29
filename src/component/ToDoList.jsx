@@ -27,7 +27,6 @@ function ToDoList() {
         setTasks(task => [...task, {description: inputValue}]);
     }
 
-
     return (
         <>
             <div className="h-screen w-screen flex justify-center items-center border-2 border-red-600">
