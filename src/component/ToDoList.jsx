@@ -3,7 +3,6 @@ import { MyContext } from "./MyContext";
 import Task from "./Task";
 
 function ToDoList() {
-    // const {} = useContext(MyContext);
     const [taskCount, setTaskCount] = useState(3);
     const [tasks, setTasks] = useState([
         {id: 0, description: "Walk the dog", isComplete: false},
@@ -11,7 +10,6 @@ function ToDoList() {
         {id: 2, description: "Wash the dishes", isComplete: false},
     ]);
     const [inputValue, setInputValue] = useState('');
-    const [isComplete, setIsComplete] = useState(false);
 
     const handleInputValue = (event) => {
         setInputValue(event.target.value);
@@ -30,14 +28,14 @@ function ToDoList() {
         } 
         else{
             setInputValue('');
-            setTasks(task => [...task, {id: taskCount, description: inputValue, isComplete}]);
+            setTasks(task => [...task, {id: taskCount, description: inputValue, isComplete: false}]);
             setTaskCount(prev => prev + 1);
         }
     };
 
     return (
         <>
-            <MyContext.Provider value={{setTasks, taskCount, setTaskCount, isComplete, setIsComplete}}>
+            <MyContext.Provider value={{setTasks, taskCount, setTaskCount}}>
                 <div className="h-screen w-screen flex justify-center items-center border-2 border-red-600">
                     <div id="list-container" className="h-full w-1/2 flex flex-col items-center border-2 border-red-600">
                         {/* TITLE */}
@@ -53,7 +51,7 @@ function ToDoList() {
 
                             {/* TASKS */}
                             {tasks.map((task) => {
-                                return <Task key={task.id} id={task.id} description={task.description} isComplete={task.isComplete}/>
+                                return <Task key={task.id} id={task.id} description={task.description}/>
                             })}
 
                         </div>
