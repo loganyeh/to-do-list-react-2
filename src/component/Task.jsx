@@ -1,8 +1,9 @@
-import { useContext } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import { MyContext } from "./MyContext";
 
 function Task({id, description}) {
-    const {tasks, setTasks, taskCount, setTaskCount, isComplete, setIsComplete} = useContext(MyContext);
+    const {tasks, setTasks, taskCount, setTaskCount} = useContext(MyContext);
+    const [isComplete, setIsComplete] = useState(false);
 
     const handleDelete = (itemToDelete) => {
         setTasks(prevItems => prevItems.filter(item => item.description !== itemToDelete));
@@ -10,7 +11,6 @@ function Task({id, description}) {
 
     const handleComplete = () => {
         setIsComplete(prev => !prev);
-        console.log(`isComplete is ${isComplete} at ${id}`);
     }
 
     return (
