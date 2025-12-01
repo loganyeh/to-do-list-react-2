@@ -5,9 +5,9 @@ import Task from "./Task";
 function ToDoList() {
     const [taskCount, setTaskCount] = useState(3);
     const [tasks, setTasks] = useState([
-        {id: 0, description: "Walk the dog", isComplete: false},
-        {id: 1, description: "Take out the trash", isComplete: false},
-        {id: 2, description: "Wash the dishes", isComplete: false},
+        {id: 0, description: "Walk the dog"},
+        {id: 1, description: "Take out the trash"},
+        {id: 2, description: "Wash the dishes"},
     ]);
     const [inputValue, setInputValue] = useState('');
 
@@ -21,14 +21,12 @@ function ToDoList() {
     };
 
     const addTask = () => {
-        // handleInputValue();
-        // had it here at first but didn't work when commented out the thing works
         if(inputValue === ""){
             window.alert(`Add a task`);
         } 
         else{
             setInputValue('');
-            setTasks(task => [...task, {id: taskCount, description: inputValue, isComplete: false}]);
+            setTasks(task => [...task, {id: taskCount, description: inputValue}]);
             setTaskCount(prev => prev + 1);
         }
     };
